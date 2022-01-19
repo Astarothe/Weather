@@ -1,25 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useEffect} from "react";
+import {usePosition} from "./castom/usePosition";
+import {useDispatch, useSelector} from "react-redux";
+import {getWeatherUser} from "./actions/actions";
+import {Content} from "./components/Content";
+import {COMPLETED} from "./constants/constants";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const {latitude, longitude, error} = usePosition()
+    const {status} = useSelector(state => state.loading)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        latitude &&
+        longitude && dispatch(getWeatherUser(latitude, longitude))
+
+    }, [latitude, longitude, dispatch])
+
+    return (
+        <div>
+            {status === COMPLETED ? <Content/> : <h1>LOAD</h1>}
+        </div>
+    );
 }
 
 export default App;

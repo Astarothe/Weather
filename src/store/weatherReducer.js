@@ -1,0 +1,20 @@
+import {FORECAST, WEATHER_USER} from "../constants/constants";
+
+const initialState = {}
+
+export const weatherReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case WEATHER_USER:
+            return {
+                ...state,
+                ...action.data,
+            }
+        case FORECAST:
+            return {
+                ...state,
+                forecast: action.data,
+            }
+        default:
+            return state
+    }
+}
