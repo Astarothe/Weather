@@ -5,7 +5,6 @@ import { WeatherCurrent } from './WeatherCurrent';
 import { Location } from './Location';
 
 function Weather() {
-
   return (
     <WeatherMainContainer>
       <Location />

@@ -9,8 +9,8 @@ export function Search() {
   const error = useSelector(loadingLoad);
   const search = width < 768 ? <SearchMobile error={error} /> : <SearchTablet error={error} />;
   return (
-    <div>
+    <>
       {search}
-    </div>
+    </>
   );
 }
