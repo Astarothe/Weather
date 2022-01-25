@@ -9,6 +9,7 @@ export function Search() {
   const error = useSelector(loadingLoad);
   const search = width < 768 ? <SearchMobile error={error} /> : <SearchTablet error={error} />;
   return (
+  // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       {search}
     </>
