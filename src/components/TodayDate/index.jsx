@@ -4,6 +4,7 @@ import { Search } from '../Search';
 import { TodayDateWrapper } from './component';
 
 function TodayDate() {
+
   return (
     <TodayDateWrapper>
       <Date />

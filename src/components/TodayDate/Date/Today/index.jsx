@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { TodayDay } from './component';
-import { todaySettings } from '../../../../helpers/Date';
+import { todaySettings } from '../../../../helpers/date';
 
 export default function Today({ currentTime }) {
   const {

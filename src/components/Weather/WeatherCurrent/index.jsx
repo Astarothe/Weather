@@ -25,9 +25,7 @@ export function WeatherCurrent() {
         <Title fontSize="24px">{main}</Title>
         <Description transform="capitalize">{description}</Description>
         <Temp fontSize="20px">
-          {temp}
-          {' '}
-          °C
+          {temp} °C
         </Temp>
       </WeatherCurrentWrapper>
       <Conditions />

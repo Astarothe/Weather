@@ -2,7 +2,8 @@ import { weatherApi } from '../api/weather-api';
 import cloud from '../assets/image/cloud.svg';
 import drop from '../assets/image/drop.svg';
 import wind from '../assets/image/wind.svg';
-import { imageRequest, positiveOrNegative } from './imageRequest';
+import { imageLink } from './imageLink';
+import { positiveOrNegative } from './positiveOrNegative';
 
 const destructNowDay = (data) => {
   const {
@@ -15,7 +16,7 @@ const destructNowDay = (data) => {
     wind: { speed },
   } = data;
 
-  const icon = imageRequest(image);
+  const icon = imageLink(image);
 
   const tempRound = Math.round(temp);
   const temperature = positiveOrNegative(tempRound);
@@ -49,7 +50,7 @@ const destructForecast = async (lat, lon) => {
       weather: [{ main, description, icon: image }],
     } = elem;
 
-    const icon = imageRequest(image);
+    const icon = imageLink(image);
 
     const tempRound = Math.round(temp);
     const temperature = positiveOrNegative(tempRound);

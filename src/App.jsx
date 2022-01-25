@@ -12,7 +12,9 @@ function App() {
   const { latitude, longitude, error } = usePosition();
   const dispatch = useDispatch();
   const allStore = useSelector(weatherAll);
+
   const store = Object.keys(allStore).length;
+
   useEffect(() => {
     if (latitude && longitude && !store) {
       dispatch(getWeatherUser(latitude, longitude));
@@ -22,6 +24,7 @@ function App() {
   if (error && !store) {
     return <ErrorGeo>{error}</ErrorGeo>;
   }
+
   return (
     <MainWrapper>
       <Content />

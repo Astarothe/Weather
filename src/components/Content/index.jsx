@@ -12,6 +12,7 @@ import Weather from '../Weather';
 function Content() {
   const { status } = useSelector(loading);
   const [initialize, setInitialize] = useState(false);
+
   if (!initialize && status !== COMPLETED) {
     return <Loader />;
   }
@@ -19,6 +20,7 @@ function Content() {
   if (!initialize && status === COMPLETED) {
     setInitialize(true);
   }
+
   return (
     <>
       <ContentWrapper>

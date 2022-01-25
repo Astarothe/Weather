@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pm, Time } from './component';
-import { timeSettings } from '../../../../helpers/Date';
+import { timeSettings } from '../../../../helpers/date';
 
 export default function Clock({ currentTime }) {
   const { time, pm } = timeSettings(currentTime);

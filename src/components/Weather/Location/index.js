@@ -8,14 +8,10 @@ export function Location() {
   return (
     <LocationWrapper>
       <City>
-        City:
-        {' '}
-        {city}
+        City: {city}
       </City>
       <Country>
-        Country:
-        {' '}
-        {country}
+        Country: {country}
       </Country>
     </LocationWrapper>
   );
