@@ -1,13 +1,34 @@
-import {Date} from "../Date";
-import {Location} from "../Location";
-import {Forecast} from "../Forecast";
-import Background from "../../assets/image/287141.jpg"
-export const Content = (props) => {
-    return(
-        <div style={{background: `url(${Background}) center top no-repeat`, height: "100vh"}}>
-            <Date/>
-            <Location/>
-            <Forecast/>
-        </div>
-    )
+import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+
+import { ContentWrapper } from './component';
+import { WeatherWeek } from '../WeatherWeek';
+import { COMPLETED, LOADING } from '../../constants/constants';
+import { Loader } from '../Loader';
+import { loading } from '../../selectors';
+import TodayDate from '../TodayDate';
+import Weather from '../Weather';
+
+function Content() {
+  const { status } = useSelector(loading);
+  const [initialize, setInitialize] = useState(false);
+  if (!initialize && status !== COMPLETED) {
+    return <Loader />;
+  }
+
+  if (!initialize && status === COMPLETED) {
+    setInitialize(true);
+  }
+  return (
+    <>
+      <ContentWrapper>
+        <TodayDate />
+        <Weather />
+      </ContentWrapper>
+      <WeatherWeek />
+      {status === LOADING && <Loader />}
+    </>
+  );
 }
+
+export default Content;
