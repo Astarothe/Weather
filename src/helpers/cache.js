@@ -5,7 +5,7 @@ export function cache(city) {
     const current = new Date().getTime();
     const passed = new Date(city.time).getTime();
     const difference = (current - passed);
-    const parse = parseInt(difference / (1000 * 60));
+    const parse = Number(difference / (1000 * 60));
     return parse < delay;
   }
   return false;

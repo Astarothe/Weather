@@ -13,6 +13,7 @@ export const getWeatherUser = (latitude, longitude) => async (dispatch) => {
     const { data } = await weatherApi.getWeather(latitude, longitude);
     const result = await dataDestruct(data);
 
+    dispatch(addCityCache(result.city, result, new Date()));
     dispatch(addWeatherUser(result));
     dispatch(changeLoader(null));
   } catch (err) {
@@ -25,6 +26,7 @@ export const getWeatherUser = (latitude, longitude) => async (dispatch) => {
 export const getCityWeather = (name) => async (dispatch, getState) => {
   try {
     dispatch(changeStatus(LOADING));
+
     const city = getState().searchResults[name];
     const res = cache(city);
     if (res) {
